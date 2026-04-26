@@ -1,17 +1,21 @@
- 'use client';
- 
- import { EncryptedText } from "@/components/ui/encrypted-text";
+'use client';
+
+import dynamic from 'next/dynamic';
+import { EncryptedText } from "@/components/ui/encrypted-text";
 import React from "react";
 
-export default function page() {
+const Lanyard = dynamic(() => import('@/components/common/Lanyard'), {
+  ssr: false,
+});
+
+export default function Page() {
   return (
-    <div className="mx-auto flex max-w-lg items-center justify-center">
-      <p className="text-left">
-        You are not your job, you&apos;re not how much money you have in the
-        bank. You are not the car you drive. You&apos;re not the contents of
-        your wallet. You are not your fucking khakis.{" "}
-        <EncryptedText text="All singing, all dancing crap of the world." />
-      </p>
+    <div className="relative w-full h-screen overflow-visible">
+
+      {/* Background */}
+      <div className="absolute inset-0 flex justify-end pr-20">
+  <Lanyard position={[5, 0, 20]} />
+</div>
     </div>
   );
 }
