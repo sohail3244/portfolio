@@ -75,7 +75,7 @@ export default function Home() {
 
         <div className="relative flex-1 w-full max-h-[40vh] min-h-60">
           <Image
-            src="/profile.png"
+            src="/WhatsApp_Image_2026-06-18_at_1.04.09_PM-removebg-preview1.png"
             alt="profile"
             fill
             className="object-contain object-bottom"
