@@ -3,7 +3,9 @@
 import { Hand } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import ContactModal from "@/components/modal/ContactModal";
+import DeveloperModal from "@/components/modal/DeveloperModal";
 
 export default function Home() {
   // Scroll Lock Logic
@@ -17,6 +19,10 @@ export default function Home() {
     ease: [0.65, 0, 0.35, 1],
     delay: 0.3,
   };
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    
+
 
   return (
     <div className="w-full h-screen bg-white flex flex-col items-center justify-center overflow-hidden relative">
@@ -85,14 +91,23 @@ export default function Home() {
 
         {/* BOTTOM SECTION - Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 mt-10 mb-6">
-          <button className="bg-black text-white px-8 py-3 rounded-full font-medium shadow hover:scale-105 transition">
+          <button onClick={() => setIsModalOpen(true)} className="bg-black text-white px-8 py-3 rounded-full font-medium shadow hover:scale-105 transition">
             You need a developer
           </button>
-          <button className="border-2 border-black px-8 py-3 rounded-full font-medium hover:bg-black hover:text-white transition">
+          <button  onClick={() => setIsModalOpen(true)} className="border-2 border-black px-8 py-3 rounded-full font-medium hover:bg-black hover:text-white transition">
             Contact Me
           </button>
         </div>
       </motion.div>
+
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+      <DeveloperModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </div>
   );
 }
